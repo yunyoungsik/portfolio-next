@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,6 +15,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const DesignDetailPage = () => {
   const params = useParams();
   const name = decodeURIComponent(params?.name);
+  const imgRef = useRef(null);
 
   useEffect(() => {
     // ScrollTrigger 등록 (중복 방지)
@@ -32,19 +33,18 @@ const DesignDetailPage = () => {
     detailIntro();
     detailNavBar();
 
-    // DOM 업데이트 이후 ScrollTrigger 강제 새로고침
-    const refreshScrollTrigger = () => {
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
-    };
+    /// 이미지 로드 후 ScrollTrigger 새로고침
+    const handleImageLoad = () => ScrollTrigger.refresh();
 
-    // ScrollTrigger 초기화 보장 (지연 실행)
-    setTimeout(refreshScrollTrigger, 2000);
+    if (imgRef.current?.complete) {
+      handleImageLoad();
+    } else {
+      imgRef.current?.addEventListener('load', handleImageLoad);
+    }
 
-    // 언마운트 시 ScrollTrigger 제거
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      imgRef.current?.removeEventListener('load', handleImageLoad);
     };
   }, []);
 
@@ -69,7 +69,7 @@ const DesignDetailPage = () => {
             <progress max="100" value="0"></progress>
           </div>
 
-          <Image src={`/assets/images/detail/${name}.jpg`} alt={name} fill />
+          <Image  ref={imgRef} src={`/assets/images/detail/${name}.jpg`} alt={name} fill />
         </div>
       </main>
     </div>
