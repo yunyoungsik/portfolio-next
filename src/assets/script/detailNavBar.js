@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export function navBar() {
+export function detailNavBar() {
   gsap.to('progress', {
     value: 100,
     ease: 'Power1.easeInOut',

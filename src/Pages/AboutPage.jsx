@@ -12,6 +12,8 @@ import { aboutHover } from '@/assets/script/aboutHover';
 const AboutPage = () => {
   // script
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     aboutSmooth();
     splint();
     aboutClose();

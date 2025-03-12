@@ -52,7 +52,7 @@ const desigList = [
     work: [
       {
         id: 1,
-        name: 'Detail Page',
+        name: 'Razerpointer Detailpage',
         link: 'sp-detail',
       },
       {
@@ -68,7 +68,7 @@ const desigList = [
     work: [
       {
         id: 1,
-        name: 'Detail Page',
+        name: 'Thermostat Detailpage',
         link: 'shinwha-detail',
       },
       {
@@ -90,6 +90,8 @@ const DesignPage = () => {
   const [active, setActive] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     aboutSmooth();
     splint();
     aboutClose();
