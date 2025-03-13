@@ -65,7 +65,7 @@ const DesignDetailPage = () => {
 
       <main id="designDetail">
         <div className="detailSlideWrap">
-          <div className="scrollBar-dark">
+          <div className="scrollBar-blue">
             <progress max="100" value="0"></progress>
           </div>
 

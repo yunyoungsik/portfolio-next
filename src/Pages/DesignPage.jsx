@@ -210,7 +210,6 @@ const DesignPage = () => {
                 </li>
               </ul>
             </div>
-            <div className="aboutInfor__bottom"></div>
           </div>
           <div className="aboutText">
             <div className="aboutService">
