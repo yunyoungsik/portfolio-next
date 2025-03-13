@@ -10,6 +10,7 @@
   align-items: center;
   width: 100%;
   height: 100vh;
+  padding: 30px 40px;
   font-size: 2rem;
   background-image: url('/assets/images/star.webp');
   background-size: contain;
@@ -213,6 +214,7 @@
   }
 
   .designTitle {
+    padding: 15px 20px;
     justify-content: center;
   }
 
